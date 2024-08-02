@@ -4,37 +4,32 @@
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   <title>Tonnia Token Mini App</title>
-  <script>
-    const telegramBotToken = '7047273335:AAFDCrKv90FzQU90TD4OkZjJ45bDM94lf40';
-    const miniAppId = 23156900;
-    const apiHash = '77f95abf3c273410fb1d3225ad11068b';
-
-    // Initialize the Telegram Bot API
-    const botApi = new TelegramBotApi(telegramBotToken);
-
-    // Initialize the mini app
-    const miniApp = new MiniApp(miniAppId, apiHash);
-  </script>
+  <script src="class.js"></script>
 </head>
 <body>
   <h1>Tonnia Token Mining</h1>
   <button id="start-mining-btn">Start Mining</button>
   <input type="text" id="balance-input" value="0" readonly>
   <textarea id="mining-logs" readonly></textarea>
-
   <script>
-    let balance = 0;
+    // Initialize Telegram Bot API
+    const telegramBotToken = '7047273335:AAFDCrKv90FzQU90TD4OkZjJ45bDM94lf40';
+    const botApi = new TelegramBotApi(telegramBotToken);
 
+    // Initialize Mini App
+    const miniAppId = 23156900;
+    const apiHash = '77f95abf3c273410fb1d3225ad11068b';
+    const miniApp = new MiniApp(miniAppId, apiHash);
+
+    let balance = 0;
     function startMining() {
       // Simulate mining process
       balance += 10; // Increase balance by 10
-      document.getElementById('balance-input').value = balance;
-
+      document.getElementById('balance-input').value = balance; // Display balance
       // Display mining logs
       const logsTextarea = document.getElementById('mining-logs');
       logsTextarea.value += `Mining successful! Balance: ${balance}\n`;
     }
-
     // Add event listener to the start mining button
     document.getElementById('start-mining-btn').addEventListener('click', startMining);
   </script>
